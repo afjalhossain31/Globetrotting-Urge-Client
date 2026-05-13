@@ -1,8 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Globetrotting Urge - Client Side
+
+Globetrotting Urge is a modern travel destination discovery and booking application built with **Next.js 15+** and **Tailwind CSS**. It allows users to browse exotic locations, view detailed information, and manage their travel bookings seamlessly.
+
+## 🚀 Key Features
+
+- **Destination Discovery**: Browse a curated list of beautiful travel destinations.
+- **Dynamic Details**: View rich information for each destination including duration, price, and location.
+- **Secure Authentication**: Planned integration with **Better-Auth** for secure user login and profile management.
+- **Booking Management**: Users can book their favorite trips and manage their current bookings.
+- **Admin Capabilities**: Add, edit, or delete destinations directly from the UI (connected to a MongoDB backend).
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop using Tailwind CSS and HeroUI.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org) (App Router)
+- **Runtime**: [Node.js](https://nodejs.org)
+- **Database**: [MongoDB](https://www.mongodb.com) (Atlas)
+- **Authentication**: Upcoming (NextAuth.js/Better-Auth)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com), [HeroUI](https://heroui.com)
+- **Icons**: React Icons
+- **State & Fetching**: React Server Components & Transitions
+
+## 📂 Project Structure
+
+- `src/app/destinations`: View all available trips.
+- `src/app/destinations/[id]`: Detailed view of a specific destination.
+- `src/app/add-destination`: Form to contribute new travel spots.
+- `src/app/my-bookings`: Manage personal travel plans.
+- `src/components`: Reusable UI components like `Navbar`, `Footer`, `BookingCard`, etc.
+
+## ⚙️ Development Highlights
+
+One of the more complex parts of this project involves handling **Server-Side Rendering (SSR)** mixed with **Client Side Interactivity**. For example, fetching data from a singular backend endpoint (`/destination`) while managing dynamic IDs for editing and deleting requires precise route handling in Next.js.
 
 ## Getting Started
 
-First, run the development server:
+First, ensure your backend server is running on `http://localhost:5000`. Then, run the development server:
 
 ```bash
 npm run dev

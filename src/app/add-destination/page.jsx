@@ -25,7 +25,7 @@ export default function AddDestinationPage() {
 
     startTransition(async () => {
       try {
-        const res = await fetch("http://localhost:5000/destinations", {
+        const res = await fetch("http://localhost:5000/destination", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

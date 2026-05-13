@@ -4,7 +4,7 @@ import DestinationCard from "@/components/destinationCard";
 const DestinationsPage = async () => {
     let destinations = [];
     try {
-        const res = await fetch("http://localhost:5000/destinations", { 
+        const res = await fetch("http://localhost:5000/destination", { 
             next: { revalidate: 0 },
             cache: "no-store" 
         });

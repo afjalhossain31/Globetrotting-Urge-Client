@@ -17,11 +17,32 @@ import {
 export default function AddDestinationPage() {
   const [isPending, startTransition] = useTransition();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     console.log("Form Data:", data);
+
+    startTransition(async () => {
+      try {
+        const res = await fetch("http://localhost:5000/destinations", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+        console.log("Response:", result);
+        if (res.ok) {
+          alert("Destination added successfully!");
+          e.target.reset();
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
+    });
   };
 
   return (

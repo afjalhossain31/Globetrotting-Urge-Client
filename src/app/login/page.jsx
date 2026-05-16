@@ -1,7 +1,8 @@
 "use client";
 
+import { FcGoogle } from "react-icons/fc";
 import React from 'react';
-import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { Button, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 
 import { authClient } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
@@ -9,7 +10,7 @@ import { redirect } from 'next/navigation';
 const LoginPage = () => {
 
     const onSubmit = async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         const formData = new FormData(e.target);
         const user = Object.fromEntries(formData.entries());
@@ -18,22 +19,25 @@ const LoginPage = () => {
         const { data, error } = await authClient.signIn.email({
             email: user.email, // required
             password: user.password, // required
-         
+
         });
 
         console.log(data, error);
-        
+
         if (data) {
             redirect('/');
         }
-        if (error){
-           // toast.error(error.message);
-           alert("message");
+        if (error) {
+            // toast.error(error.message);
+            alert("message");
         }
-
-
     };
 
+    const handleGoogleSignin = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        });
+    };
 
 
     return (
@@ -94,6 +98,15 @@ const LoginPage = () => {
 
                     </div>
                 </Form>
+
+                <div className="flex justify-center items-center gap-3">
+                    <Separator />
+                    <div className="whitespace-nowrap"> Or sign up with </div>
+                    <Separator />
+                </div>
+                <div>
+                    <Button onClick={handleGoogleSignin} variant="outline" className={'w-full rounded-none'}><FcGoogle /> Sign in with Google</Button>
+                </div>
             </card>
         </div>
     );
